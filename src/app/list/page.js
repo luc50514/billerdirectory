@@ -10,57 +10,72 @@ import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { TransitionGroup } from "react-transition-group";
+import useTimeout from "../useTimeout";
 
-const FRUITS = [
-  "🍏 Apple",
-  "🍌 Banana",
-  "🍍 Pineapple",
-  "🥥 Coconut",
-  "🍉 Watermelon",
+const EVENT_TYPES = [
+  {
+    id: 0,
+    name: "addressChanged",
+    title: "Address Changed",
+  },
+  {
+    id: 1,
+    name: "billerDeleted",
+    title: "Biller Deleted",
+  },
 ];
 
-function renderItem({ item, handleRemoveFruit }) {
+const EVENTS = [
+  {
+    id: 0,
+    target: "Rich Hood",
+    value: EVENT_TYPES[0],
+  },
+  {
+    id: 1,
+    target: "Rich Hood",
+    value: EVENT_TYPES[1],
+  },
+]
+
+function renderItem({ item }) {
   return (
     <ListItem>
-      <ListItemText primary={item} />
+      <ListItemText primary={item.target} secondary={item.value.title}/>
     </ListItem>
   );
 }
 
-export default function TransitionGroupExample() {
+export default function DrawerList() {
   const [fruitsInBasket, setFruitsInBasket] = React.useState(
-    FRUITS.slice(0, 3)
+    EVENTS
   );
 
   const handleAddFruit = () => {
-    const nextHiddenItem = FRUITS.find((i) => !fruitsInBasket.includes(i));
-    if (nextHiddenItem) {
-      setFruitsInBasket((prev) => [nextHiddenItem, ...prev]);
-    }
+    setFruitsInBasket((items) => {
+      items.push({
+        id: items[items.length - 1].id + 1,
+        target: "Rich Hood",
+        value: EVENT_TYPES[1],
+      })
+      return items;
+    })
   };
 
   const handleRemoveFruit = (item) => {
     setFruitsInBasket((prev) => [...prev.filter((i) => i !== item)]);
   };
 
-  const addFruitButton = (
-    <Button
-      variant="contained"
-      disabled={fruitsInBasket.length >= FRUITS.length}
-      onClick={handleAddFruit}
-    >
-      Add fruit to basket
-    </Button>
-  );
+  useTimeout(handleAddFruit, 500)
 
   return (
     <div>
-      {addFruitButton}
       <Box sx={{ mt: 1 }}>
         <List>
           <TransitionGroup>
+
             {fruitsInBasket.map((item) => (
-              <Collapse key={item}>
+              <Collapse key={item.id}>
                 {renderItem({ item, handleRemoveFruit })}
               </Collapse>
             ))}
