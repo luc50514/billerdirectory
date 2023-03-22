@@ -9,11 +9,14 @@ import Select from "@mui/material/Select";
 import { EVENT_TYPES } from "@/app/consts";
 
 export default function EventType({ onChange }) {
-  const [age, setAge] = useState("");
+  const [value, setValue] = useState("");
 
   const handleChange = (event) => {
-    setAge(event.target.value);
-    onChange(event.target.value);
+    const id = event.target.value;
+    const eventType = EVENT_TYPES.find((type) => type.id === id);
+
+    setValue(event.target.value);
+    onChange(eventType);
   };
 
   return (
@@ -23,13 +26,13 @@ export default function EventType({ onChange }) {
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={age}
+          value={value}
           label="Age"
           onChange={handleChange}
         >
-          {EVENT_TYPES.map(({ id, name, title }) => {
+          {EVENT_TYPES.map(({ id, title }) => {
             return (
-              <MenuItem key={id} value={{ id, name, title }}>
+              <MenuItem key={id} value={id}>
                 {title}
               </MenuItem>
             );
