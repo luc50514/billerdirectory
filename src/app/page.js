@@ -19,6 +19,7 @@ const drawerWidth = 240;
 
 export default function PermanentDrawerRight() {
   const [listOfEvents, setlistOfEvents] = useState(EVENTS);
+  const [filterValue, setFilterValue] = useState(null);
 
   useEffect(() => {
     const addEvent = (value) => {
@@ -55,12 +56,16 @@ export default function PermanentDrawerRight() {
       >
         <Toolbar />
         <Autocomplete
+          value={filterValue}
           id="biller-search"
           data-testid="biller-search"
           options={[...new Set(listOfEvents.map((option) => option.target))]}
           renderInput={(params) => (
             <TextField {...params} label="Search Billers" />
           )}
+          onChange={(event, newValue) => {
+            setFilterValue(newValue);
+          }}
         />
         <Badge />
       </Box>
@@ -79,6 +84,7 @@ export default function PermanentDrawerRight() {
         <DrawerList
           listOfEvents={listOfEvents}
           setlistOfEvents={setlistOfEvents}
+          filterValue={filterValue}
         />
       </Drawer>
     </Box>

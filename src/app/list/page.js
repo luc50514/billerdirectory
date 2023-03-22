@@ -17,7 +17,7 @@ function renderItem({ item }) {
   );
 }
 
-export default function DrawerList({listOfEvents, setlistOfEvents}) {
+export default function DrawerList({listOfEvents, setlistOfEvents, filterValue}) {
 
   const handleAddFruit = () => {
     setlistOfEvents((items) => {
@@ -43,7 +43,7 @@ export default function DrawerList({listOfEvents, setlistOfEvents}) {
       <Box sx={{ mt: 1 }}>
         <List data-testid="eventlist">
           <TransitionGroup>
-            {listOfEvents.map((item) => (
+            {listOfEvents.filter((item) => !filterValue ? true : item.target === filterValue).map((item) => (
               <Collapse key={item.id}>
                 {renderItem({ item, handleRemoveFruit })}
               </Collapse>
