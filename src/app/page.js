@@ -14,6 +14,7 @@ import Autocomplete from "@mui/material/Autocomplete";
 import { EVENTS } from "./consts";
 import DrawerList from "./list/page";
 import Badge from "./Badge/Badge";
+import { ConnectionManager } from "./Badge/ConnectionManager";
 
 const drawerWidth = 240;
 
@@ -45,9 +46,10 @@ export default function PermanentDrawerRight() {
         sx={{ width: `calc(100% - ${drawerWidth}px)`, mr: `${drawerWidth}px` }}
       >
         <Toolbar>
-          <Typography variant="h6" noWrap component="div">
+          <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
             Search Billers
           </Typography>
+          <ConnectionManager />
         </Toolbar>
       </AppBar>
       <Box

@@ -2,6 +2,7 @@
 
 import React from "react";
 import { socket } from "@/socket";
+import Button from "@mui/material/Button";
 
 const connect = () => {
   console.log("socket.connect();");
@@ -16,8 +17,22 @@ const disconnect = () => {
 export function ConnectionManager() {
   return (
     <>
-      <button onClick={connect}>Connect</button>
-      <button onClick={disconnect}>Disconnect</button>
+      <Button
+        onClick={connect}
+        variant="contained"
+        color="info"
+        disabled={socket?.connected}
+      >
+        Connect
+      </Button>
+      <Button
+        onClick={disconnect}
+        variant="contained"
+        color="warning"
+        disabled={!socket?.connected}
+      >
+        Disconnect
+      </Button>
     </>
   );
 }

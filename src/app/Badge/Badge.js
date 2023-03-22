@@ -2,8 +2,6 @@
 
 import React, { useState, useEffect } from "react";
 import { socket } from "@/socket";
-import { ConnectionState } from "./ConnectionState";
-import { ConnectionManager } from "./ConnectionManager";
 import { MyForm } from "./MyForm";
 import { Events } from "./Events";
 
@@ -40,9 +38,7 @@ export default function App() {
 
   return (
     <div>
-      <ConnectionState isConnected={isConnected} />
       <Events events={fooEvents} />
-      <ConnectionManager />
       <MyForm />
     </div>
   );
