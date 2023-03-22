@@ -5,6 +5,7 @@ import { socket } from "@/socket";
 import EventType from "./EventType";
 
 export function MyForm() {
+  const [id, setId] = useState(2);
   const [eventType, setEventType] = useState();
   const [value, setValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -16,13 +17,14 @@ export function MyForm() {
     console.log("value", value);
 
     const obj = {
-      id: 0,
+      id,
       target: value,
       value: eventType,
     };
 
     socket.emit("foo", obj, (msg) => {
       console.log("cleanup?", msg);
+      setId(id + 1);
       setIsLoading(false);
     });
   };
