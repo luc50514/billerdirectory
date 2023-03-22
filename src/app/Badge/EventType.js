@@ -29,7 +29,7 @@ export default function EventType({ onChange }) {
         >
           {EVENT_TYPES.map(({ id, name, title }) => {
             return (
-              <MenuItem key={id} value={name}>
+              <MenuItem key={id} value={{ id, name, title }}>
                 {title}
               </MenuItem>
             );
