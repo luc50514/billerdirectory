@@ -14,6 +14,7 @@ export function MyForm() {
     console.log("value", value);
 
     socket.emit("foo", value, () => {
+      console.log("cleanup?");
       setIsLoading(false);
     });
   };
