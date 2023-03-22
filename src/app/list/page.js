@@ -11,7 +11,7 @@ import { EVENT_TYPES } from "@/app/consts";
 
 function renderItem({ item }) {
   return (
-    <ListItem>
+    <ListItem data-testid={item.id}>
       <ListItemText primary={item.target} secondary={item.value.title} />
     </ListItem>
   );
@@ -41,7 +41,7 @@ export default function DrawerList({listOfEvents, setlistOfEvents}) {
   return (
     <div>
       <Box sx={{ mt: 1 }}>
-        <List>
+        <List data-testid="eventlist">
           <TransitionGroup>
             {listOfEvents.map((item) => (
               <Collapse key={item.id}>

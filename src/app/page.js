@@ -38,6 +38,7 @@ export default function PermanentDrawerRight() {
         <Toolbar />
         <Autocomplete
           id="biller-search"
+          data-testid="biller-search"
           options={[...new Set(listOfEvents.map((option) => option.target))]}
           renderInput={(params) => <TextField {...params} label="Search Billers" />}
         />
