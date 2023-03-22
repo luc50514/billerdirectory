@@ -26,7 +26,7 @@ export default function DrawerList({listOfEvents, setlistOfEvents}) {
       items.unshift({
         id,
         target: "Rich Hood " + id,
-        value: EVENT_TYPES[1],
+        value: EVENT_TYPES[Math.floor(Math.random() * EVENT_TYPES.length)],
       });
       return [...items];
     });

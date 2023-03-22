@@ -9,6 +9,26 @@
     name: "billerDeleted",
     title: "Biller Deleted",
   },
+   {
+     id: 2,
+     name: "billerCreated",
+     title: "Biller Created",
+   },
+   {
+     id: 3,
+     name: "billerNameChanged",
+     title: "Biller Name Changed"
+   },
+   {
+     id: 4,
+     name: "billerAccountChanged",
+     title: "Biller Name Changed",
+   },
+   {
+     id: 5,
+     name: "billerLocationChanged",
+     title: "Biller Location Changed"
+   }
 ];
 
 export const EVENTS = [
