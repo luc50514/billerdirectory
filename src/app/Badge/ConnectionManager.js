@@ -2,11 +2,22 @@
 
 import React from "react";
 import { socket } from "@/socket";
+
+const connect = () => {
+  console.log("socket.connect();");
+  socket.connect();
+};
+
+const disconnect = () => {
+  console.log("socket.disconnect();");
+  socket.disconnect();
+};
+
 export function ConnectionManager() {
   return (
     <>
-      <button onClick={socket?.connect}>Connect</button>
-      <button onClick={socket?.disconnect}>Disconnect</button>
+      <button onClick={connect}>Connect</button>
+      <button onClick={disconnect}>Disconnect</button>
     </>
   );
 }

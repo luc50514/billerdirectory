@@ -9,21 +9,23 @@ import { Events } from "./Events";
 
 export default function App() {
   const [isConnected, setIsConnected] = useState(socket?.connected);
-  const [fooEvents, setFooEvents] = useState();
+  const [fooEvents, setFooEvents] = useState([]);
 
   useEffect(() => {
-    function onConnect() {
-      console.log("setIsConnected");
+    const onConnect = () => {
+      console.log("onConnect");
       setIsConnected(true);
-    }
+    };
 
-    function onDisconnect() {
+    const onDisconnect = () => {
+      console.log("onDisconnect");
       setIsConnected(false);
-    }
+    };
 
-    function onFooEvent(value) {
+    const onFooEvent = (value) => {
+      console.log("onFooEvent", value);
       setFooEvents((previous) => [...previous, value]);
-    }
+    };
 
     socket.on("connect", onConnect);
     socket.on("disconnect", onDisconnect);
@@ -36,10 +38,8 @@ export default function App() {
     };
   }, []);
 
-  console.log("isConnected", isConnected);
-
   return (
-    <div className="App">
+    <div>
       <ConnectionState isConnected={isConnected} />
       <Events events={fooEvents} />
       <ConnectionManager />

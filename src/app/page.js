@@ -45,8 +45,8 @@ export default function PermanentDrawerRight() {
             <TextField {...params} label="Search Billers" />
           )}
         />
+        <Badge />
       </Box>
-      <Badge />
       <Drawer
         sx={{
           width: drawerWidth,
