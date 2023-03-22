@@ -13,8 +13,8 @@ export function MyForm() {
 
     console.log("value", value);
 
-    socket.emit("foo", value, () => {
-      console.log("cleanup?");
+    socket.emit("foo", value, (msg) => {
+      console.log("cleanup?", msg);
       setIsLoading(false);
     });
   };
