@@ -36,7 +36,7 @@ export default function DrawerList({listOfEvents, setlistOfEvents}) {
     setlistOfEvents((prev) => [...prev.filter((i) => i !== item)]);
   };
 
-  useInterval(handleAddFruit, 2000);
+  // useInterval(handleAddFruit, 2000);
 
   return (
     <div>

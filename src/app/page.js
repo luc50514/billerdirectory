@@ -1,8 +1,9 @@
 "use client";
 
 import * as React from "react";
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import Box from "@mui/material/Box";
+import {socket} from "@/socket";
 import Drawer from "@mui/material/Drawer";
 import CssBaseline from "@mui/material/CssBaseline";
 import AppBar from "@mui/material/AppBar";
@@ -18,6 +19,22 @@ const drawerWidth = 240;
 
 export default function PermanentDrawerRight() {
   const [listOfEvents, setlistOfEvents] = useState(EVENTS);
+
+  useEffect(() => {
+    const addEvent = (value) => {
+      console.log("onFooEvent", value);
+      setlistOfEvents((items) => {
+        items.unshift(value);
+        return [...items];
+      });
+    };
+
+    socket.on("foo", addEvent);
+
+    return () => {
+      socket.off("foo", addEvent);
+    };
+  }, []);
 
   return (
     <Box sx={{ display: "flex" }}>
