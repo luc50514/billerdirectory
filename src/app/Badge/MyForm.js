@@ -24,7 +24,6 @@ export function MyForm() {
     };
 
     socket.emit("foo", obj, (msg) => {
-      console.log("cleanup?", msg);
       setId(id + 1);
       setIsLoading(false);
       setValue("");
@@ -50,7 +49,6 @@ export function MyForm() {
         <Grid item>
           <EventType onChange={handleEventChange} />
         </Grid>
-
         <Grid item>
           <TextField
             value={value}
@@ -59,7 +57,11 @@ export function MyForm() {
           />
         </Grid>
         <Grid item>
-          <Button variant="contained" type="submit" disabled={value === ""}>
+          <Button
+            variant="contained"
+            type="submit"
+            disabled={value === "" || isLoading}
+          >
             Add
           </Button>
         </Grid>

@@ -62,10 +62,9 @@ export default function PermanentDrawerRight() {
           id="biller-search"
           data-testid="biller-search"
           options={[...new Set(listOfEvents.map((option) => option.target))]}
-          renderInput={(params) => {
-            console.log(params);
-            return <TextField {...params} label="Search Billers" />;
-          }}
+          renderInput={(params) => (
+            <TextField {...params} label="Search Billers" />
+          )}
           onChange={(event, newValue) => {
             setFilterValue(newValue);
           }}
