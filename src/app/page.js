@@ -1,22 +1,23 @@
 "use client";
 
 import * as React from "react";
-import { useEffect, useState } from "react";
-import Box from "@mui/material/Box";
-import { socket } from "@/socket";
-import Drawer from "@mui/material/Drawer";
-import CssBaseline from "@mui/material/CssBaseline";
 import AppBar from "@mui/material/AppBar";
+import Autocomplete from "@mui/material/Autocomplete";
+import Box from "@mui/material/Box";
+import CssBaseline from "@mui/material/CssBaseline";
+import Drawer from "@mui/material/Drawer";
+import Grid from "@mui/material/Grid";
+import TextField from "@mui/material/TextField";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import TextField from "@mui/material/TextField";
-import Autocomplete from "@mui/material/Autocomplete";
+import { socket } from "@/socket";
+import { useEffect, useState } from "react";
 import { EVENTS } from "./consts";
 import DrawerList from "./list/page";
 import Badge from "./Badge/Badge";
 import ConnectionManager from "./ConnectionManager";
 
-const drawerWidth = 240;
+const drawerWidth = 300;
 
 export default function PermanentDrawerRight() {
   const [listOfEvents, setlistOfEvents] = useState(EVENTS);
@@ -46,10 +47,21 @@ export default function PermanentDrawerRight() {
         sx={{ width: `calc(100% - ${drawerWidth}px)`, mr: `${drawerWidth}px` }}
       >
         <Toolbar>
-          <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
-            Biller Directory
-          </Typography>
-          <ConnectionManager />
+          <Grid container>
+            <Grid item xs>
+              <Typography
+                variant="h6"
+                noWrap
+                component="div"
+                sx={{ flexGrow: 1 }}
+              >
+                Biller Directory
+              </Typography>
+            </Grid>
+            <Grid item>
+              <ConnectionManager />
+            </Grid>
+          </Grid>
         </Toolbar>
       </AppBar>
       <Box
