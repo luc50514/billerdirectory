@@ -1,9 +1,9 @@
 "use client";
 
 import * as React from "react";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
-import {socket} from "@/socket";
+import { socket } from "@/socket";
 import Drawer from "@mui/material/Drawer";
 import CssBaseline from "@mui/material/CssBaseline";
 import AppBar from "@mui/material/AppBar";
@@ -14,7 +14,7 @@ import Autocomplete from "@mui/material/Autocomplete";
 import { EVENTS } from "./consts";
 import DrawerList from "./list/page";
 import Badge from "./Badge/Badge";
-import { ConnectionManager } from "./Badge/ConnectionManager";
+import ConnectionManager from "./ConnectionManager";
 
 const drawerWidth = 240;
 

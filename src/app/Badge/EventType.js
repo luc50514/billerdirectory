@@ -20,14 +20,15 @@ export default function EventType({ onChange }) {
   };
 
   return (
-    <Box sx={{ maxWidth: 240 }}>
-      <FormControl fullWidth>
+    <Box>
+      <FormControl>
         <InputLabel id="demo-simple-select-label">Event Type</InputLabel>
         <Select
+          sx={{ width: 260 }}
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           value={value}
-          label="Age"
+          label="Event Type"
           onChange={handleChange}
         >
           {EVENT_TYPES.map(({ id, title }) => {

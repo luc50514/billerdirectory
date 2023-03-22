@@ -3,6 +3,9 @@
 import React, { useState } from "react";
 import { socket } from "@/socket";
 import EventType from "./EventType";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import Grid from "@mui/material/Grid";
 
 export function MyForm() {
   const [id, setId] = useState(2);
@@ -14,8 +17,6 @@ export function MyForm() {
     event.preventDefault();
     setIsLoading(true);
 
-    console.log("value", value);
-
     const obj = {
       id,
       target: value,
@@ -26,6 +27,7 @@ export function MyForm() {
       console.log("cleanup?", msg);
       setId(id + 1);
       setIsLoading(false);
+      setValue("");
     });
   };
 
@@ -39,11 +41,29 @@ export function MyForm() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <EventType onChange={handleEventChange} />
-      <input onChange={handleChange} />
-      <button type="submit" disabled={isLoading}>
-        Submit
-      </button>
+      <Grid
+        container
+        spacing={2}
+        alignItems="center"
+        justifyContent="flex-start"
+      >
+        <Grid item>
+          <EventType onChange={handleEventChange} />
+        </Grid>
+
+        <Grid item>
+          <TextField
+            value={value}
+            label="Biller Name"
+            onChange={handleChange}
+          />
+        </Grid>
+        <Grid item>
+          <Button variant="contained" type="submit" disabled={value === ""}>
+            Add
+          </Button>
+        </Grid>
+      </Grid>
     </form>
   );
 }

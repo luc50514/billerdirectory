@@ -7,7 +7,7 @@ const io = new Server({
 });
 
 io.on("connection", (socket) => {
-  console.log("server.js / a user connected");
+  console.log("server.js / connection");
 
   socket.on("foo", (msg, callback) => {
     console.log("server.js / foo", msg);
@@ -17,7 +17,7 @@ io.on("connection", (socket) => {
 });
 
 io.on("disconnect", () => {
-  console.log("server.js / a user disconnected");
+  console.log("server.js / disconnect");
 });
 
 io.listen(4000);
