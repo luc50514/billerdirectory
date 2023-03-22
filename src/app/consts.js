@@ -1,4 +1,4 @@
- export const EVENT_TYPES = [
+export const EVENT_TYPES = [
   {
     id: 0,
     name: "addressChanged",
@@ -9,26 +9,21 @@
     name: "billerDeleted",
     title: "Biller Deleted",
   },
-   {
-     id: 2,
-     name: "billerCreated",
-     title: "Biller Created",
-   },
-   {
-     id: 3,
-     name: "billerNameChanged",
-     title: "Biller Name Changed"
-   },
-   {
-     id: 4,
-     name: "billerAccountChanged",
-     title: "Biller Name Changed",
-   },
-   {
-     id: 5,
-     name: "billerLocationChanged",
-     title: "Biller Location Changed"
-   }
+  {
+    id: 2,
+    name: "billerCreated",
+    title: "Biller Created",
+  },
+  {
+    id: 3,
+    name: "billerNameChanged",
+    title: "Biller Name Changed",
+  },
+  {
+    id: 4,
+    name: "billerLocationChanged",
+    title: "Biller Location Changed",
+  },
 ];
 
 export const EVENTS = [

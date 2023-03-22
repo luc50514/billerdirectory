@@ -47,14 +47,14 @@ export default function PermanentDrawerRight() {
       >
         <Toolbar>
           <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
-            Search Billers
+            Biller Directory
           </Typography>
           <ConnectionManager />
         </Toolbar>
       </AppBar>
       <Box
         component="main"
-        sx={{ flexGrow: 1, bgcolor: "background.default", p: 3 }}
+        sx={{ flexGrow: 0, bgcolor: "background.default", p: 3 }}
       >
         <Toolbar />
         <Autocomplete
@@ -62,9 +62,10 @@ export default function PermanentDrawerRight() {
           id="biller-search"
           data-testid="biller-search"
           options={[...new Set(listOfEvents.map((option) => option.target))]}
-          renderInput={(params) => (
-            <TextField {...params} label="Search Billers" />
-          )}
+          renderInput={(params) => {
+            console.log(params);
+            return <TextField {...params} label="Search Billers" />;
+          }}
           onChange={(event, newValue) => {
             setFilterValue(newValue);
           }}
