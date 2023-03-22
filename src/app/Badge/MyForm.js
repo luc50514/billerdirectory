@@ -7,19 +7,24 @@ export function MyForm() {
   const [value, setValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  function onSubmit(event) {
+  const handleSubmit = (event) => {
     event.preventDefault();
     setIsLoading(true);
 
-    socket.timeout(1000).emit("foo", value, () => {
+    console.log("value", value);
+
+    socket.emit("foo", value, () => {
       setIsLoading(false);
     });
-  }
+  };
+
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
 
   return (
-    <form onSubmit={onSubmit}>
-      <input onChange={(e) => setValue(e.target.value)} />
-
+    <form onSubmit={handleSubmit}>
+      <input onChange={handleChange} />
       <button type="submit" disabled={isLoading}>
         Submit
       </button>

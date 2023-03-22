@@ -9,8 +9,9 @@ const io = new Server({
 io.on("connection", (socket) => {
   console.log("server.js / a user connected");
 
-  socket.on("chat message", (msg) => {
-    io.emit("chat message", msg);
+  socket.on("foo", (msg) => {
+    console.log("server.js / foo");
+    io.emit("foo", msg);
   });
 });
 
