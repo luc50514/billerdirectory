@@ -9,7 +9,7 @@ import Select from "@mui/material/Select";
 import { EVENT_TYPES } from "@/app/consts";
 
 export default function EventType({ onChange }) {
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState("");
 
   const handleChange = (event) => {
     const id = event.target.value;

@@ -60,7 +60,7 @@ export function MyForm() {
           <Button
             variant="contained"
             type="submit"
-            disabled={value === "" || isLoading}
+            disabled={value === "" || isLoading || eventType === undefined}
           >
             Add
           </Button>
