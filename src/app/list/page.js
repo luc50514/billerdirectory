@@ -32,11 +32,7 @@ const renderItem = (item) => {
   );
 };
 
-export default function DrawerList({
-  listOfEvents,
-  setlistOfEvents,
-  filterValue,
-}) {
+export default function DrawerList({ listOfEvents = [], filterValue }) {
   return (
     <Box sx={{ mt: 1 }}>
       <List data-testid="eventlist">
