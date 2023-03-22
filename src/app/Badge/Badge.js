@@ -8,11 +8,12 @@ import { MyForm } from "./MyForm";
 import { Events } from "./Events";
 
 export default function App() {
-  const [isConnected, setIsConnected] = useState();
+  const [isConnected, setIsConnected] = useState(socket?.connected);
   const [fooEvents, setFooEvents] = useState();
 
   useEffect(() => {
     function onConnect() {
+      console.log("setIsConnected");
       setIsConnected(true);
     }
 
@@ -34,6 +35,8 @@ export default function App() {
       socket.off("foo", onFooEvent);
     };
   }, []);
+
+  console.log("isConnected", isConnected);
 
   return (
     <div className="App">
