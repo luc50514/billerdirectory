@@ -23,7 +23,7 @@ export function MyForm() {
       value: eventType,
     };
 
-    socket.emit("foo", obj, (msg) => {
+    socket.emit("foo", obj, () => {
       setId(id + 1);
       setIsLoading(false);
       setValue("");
@@ -34,8 +34,8 @@ export function MyForm() {
     setValue(event.target.value);
   };
 
-  const handleEventChange = (value) => {
-    setEventType(value);
+  const handleEventChange = (newValue) => {
+    setEventType(newValue);
   };
 
   return (

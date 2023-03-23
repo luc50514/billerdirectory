@@ -1,16 +1,15 @@
 "use client";
+
 import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
 import { useServerInsertedHTML } from "next/navigation";
 import { useState } from "react";
 
-export default function RootStyleRegistry({
-                                            children,
-                                          }) {
+export default function RootStyleRegistry({ children }) {
   const [cache] = useState(() => {
-    const cache = createCache({ key: "css" });
-    cache.compat = true;
-    return cache;
+    const localCache = createCache({ key: "css" });
+    localCache.compat = true;
+    return localCache;
   });
 
   useServerInsertedHTML(() => {

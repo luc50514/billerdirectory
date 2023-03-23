@@ -8,7 +8,7 @@ import { useEffect, useRef } from "react";
  * @param {number} [delay = 0] - The time, in milliseconds that the timer should wait before the specified function or code is executed.
  * @param args - Additional arguments which are passed through to the function specified by func once the timer expires.
  */
-const useInterval = (callback = () => {}, delay = 0, args) => {
+const useInterval = (callback = () => {}, delay = 0, args = undefined) => {
   const savedCallback = useRef(callback);
 
   useEffect(() => {
