@@ -24,6 +24,21 @@ export const EVENT_TYPES = [
     name: "billerLocationChanged",
     title: "Biller Location Changed",
   },
+  {
+      id: 5,
+      name: "billerPaymentTypeChanged",
+      title: "Biller Payment Types Changed",
+  },
+  {
+      id: 6,
+      name: "billerContactInformationChanged",
+      title: "Biller Contact Information Changed",
+  },
+  {
+      id: 7,
+      name: "billerLogoChanged",
+      title: "Biller Logo",
+  },
 ];
 
 export const EVENTS = [
